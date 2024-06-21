@@ -12,14 +12,14 @@ The application follows these specs: [https://github.com/every-io/engineering-in
 
 **NOTE**: Already using REDIS for opaque authentication. This will be explained below.
 
-3. Bugs: I tested for some corner cases but not exahustively (TBH)
+3. Bugs: I tested for some corner cases but not exhaustively (TBH)
 
 ### Requirements
 
 It's complete. I created 3 endpoints:
 
-- Create Task: Associated to the logged user.
-- Retrieve Tasks: Associated to the logged user.
+- Create Task: Associated with the logged user.
+- Retrieve Tasks: Associated with the logged user.
 - Update Task: Title, Description, and Status can be modified (using json-patch standard)
 
 ### Ideal
@@ -30,12 +30,12 @@ It's complete. I created 3 endpoints:
 
 ### Extra credit
 
-- Logging 🚧: There is some logging (actually, it's using winston so it can easily be plugged with major cloud vendors)
-- Apollo: I went for REST. Even though I played with GraphQL before, I wasn't confident enough for this ocasion. I'll learn more about it.
+- Logging 🚧: There is some logging (actually, it's using `Winston` so it can easily be plugged with major cloud vendors)
+- Apollo: I went for REST. Even though I played with GraphQL before, I wasn't confident enough for this occasion. I'll learn more about it.
 
 ## Authentication
 
-I didn't want to tie this to any particular IDP, neither code one myself. I coded an opaque authentication mechanism in which, once logged in, the user session is present in redis. (This is easily plugable with any IDP that uses tokens for sessions)
+I didn't want to tie this to any particular IDP, or code one myself. I coded an opaque authentication mechanism in which, once logged in, the user session is present in redis. (This is easily pluggable with any IDP that uses tokens for sessions)
 I am seeding 2 sessions when the app starts.
 
 - Token: `asecretokenforuser0` has permissions to Create a Task, View their own Tasks, Update a Task.
@@ -53,7 +53,7 @@ The application has 2 Docker files.
 I also INTENTIONALLY left a .env.dev with some config values. SoL
 
 1. `cp .env.dev .env`
-2. `docker compose up --build` (will run mongodb, redis, and app containers). If you want to only see the app logs, you can go:
+2. `docker compose up --build` (will run mongodb, redis, and app containers). If you want only to see the app logs, you can go:
 
 ```
 docker compose up redis -d &&
@@ -62,3 +62,9 @@ docker compose up task --build
 ```
 
 3. You can use any HTTP client you want. I included an OpenAPI console with interactive documentation at: [http://localhost:8080/api-docs](http://localhost:8080/api-docs). Click "Authorize", and complete with any of the provided tokens.
+
+## Final comments
+
+There is plenty room for improvement, but I think that it's appropriate for the scope of the challenge. I'll be happy to discuss further about it.
+
+Thanks for taking the time to review and eventually meet me.
