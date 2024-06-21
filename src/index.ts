@@ -4,10 +4,10 @@ import { mongoDB } from "@config/mongodb-config";
 import { redisDB } from "@config/redis-config";
 import logger, { requestLogger } from "@lib/logger";
 import { NextFunction, Request, Response } from "express";
-import { errorHandler } from "./api/middlewares/error-handler";
-import { setupRouters } from "./api/routers";
-import { seedSessions } from "./seed/user-sessions";
-import app, { configureBasicMiddlewares } from "./server";
+import { errorHandler } from "@api/middlewares/error-handler";
+import { setupRouters } from "@api/routers";
+import { seedSessions } from "@seed/user-sessions";
+import app, { configureBasicMiddlewares } from "@server/index";
 import { swaggerConfig, swaggerDocument } from "@config/swagger-config";
 import swaggerUi from "swagger-ui-express";
 

@@ -3,15 +3,16 @@
     "target": "es2016",
     "module": "commonjs",
     "baseUrl": "./",
-    "rootDir": "./src",
+    // "rootDir": "./src",
     "paths": {
       "@config/*": ["src/config/*"],
       "@data/*": ["src/data/*"],
       "@domain/*": ["src/domain/*"],
       "@lib/*": ["src/lib/*"],
-      "@presentation/*": ["src/presentation/*"],
+      "@api/*": ["src/api/*"],
       "@utils/*": ["src/utils/*"],
-      "@clients/*": ["src/clients/*"]
+      "@server/*": ["src/server/*"],
+      "@seed/*": ["src/seed/*"]
     },
     "typeRoots": ["./@types", "./node_modules/@types"],
     "resolveJsonModule": true,
@@ -21,7 +22,7 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "exclude": ["./test/*", "jest.setup.ts"],
+  "exclude": ["jest.setup.ts"],
   "ts-node": {
     "require": ["tsconfig-paths/register"]
   }

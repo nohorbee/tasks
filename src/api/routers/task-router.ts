@@ -44,8 +44,6 @@ export default function TaskRouter(
     checkIfAuthenticated,
     checkIfAuthorized(["VIEW_OWN_TASKS"]),
     async (req: Request, res: Response) => {
-      const newTask = req.body;
-
       const tasks = await getTasksUseCase.execute(req.session.userId);
 
       res.status(201).json({ tasks: tasks });
