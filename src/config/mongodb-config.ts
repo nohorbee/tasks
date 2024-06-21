@@ -31,6 +31,8 @@ export const mongoDB = {
     client = new MongoClient(uri);
     client.connect();
     _db = client.db(dbName);
+
+    createIndexes(_db);
   },
   disconnect: function () {
     logger.info("Closing mongoDB connection");
@@ -40,3 +42,12 @@ export const mongoDB = {
     return _db;
   },
 };
+
+function createIndexes(db: Db) {
+  const tasksCollectionName = "tasks";
+
+  const collection = db.collection(tasksCollectionName);
+
+  collection.createIndex({ "audit.createdBy": 1 });
+  collection.createIndex({ _id: 1, "audit.createdBy": 1 });
+}

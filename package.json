@@ -6,8 +6,8 @@
   "author": "Norberto Herz",
   "license": "MIT",
   "scripts": {
-    "build": "npx tsc --build",
-    "start": "node -r ./tsconfig-paths.js dist/index.js",
+    "build": "npx tsc --build && cp src/config/api.yaml dist/src/config/",
+    "start": "node -r ./tsconfig-paths.js dist/src/index.js",
     "dev": "nodemon -L src/index.ts",
     "test": "jest",
     "lint": "eslint . --ext .ts",
